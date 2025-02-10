@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-
+import Button from './button';
 
 function App() {
   const[display, setDisplay] = useState(0)
@@ -62,6 +62,21 @@ function App() {
     setPreviousValue(null)
     setWaitingForNewValue(false)
   }
+
+  const handlerEqual = () => {
+    if (previousValue !== null &&  operator !== null) {
+      setDisplay(calculate())
+      setOperator(null)
+      setPreviousValue(null)
+      setWaitingForNewValue(false)
+    }
+  };
+
+  const handlerDecimal = () => {
+    if (!display.includes('.')) {
+      setDisplay(display + '.')
+    }
+  };
 
   return (
     <>
